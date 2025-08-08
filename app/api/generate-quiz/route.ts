@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { generateText } from 'ai'
-import { openai } from 'ai/openai'
+import OpenAI from 'openai'
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  baseURL: 'https://openrouter.ai/api/v1',
+})
 
 export async function POST(request: NextRequest) {
   try {
@@ -37,14 +41,18 @@ Responde en formato JSON con esta estructura:
   ]
 }`
 
-    const { text } = await generateText({
-      model: openai('gpt-3.5-turbo'),
-      prompt,
+    const completion = await openai.chat.completions.create({
+      model: 'mistralai/mistral-7b-instruct:free',
+      messages: [
+        {
+          role: 'user',
+          content: prompt
+        }
+      ],
       temperature: 0.7,
-      apiKey: process.env.OPENROUTER_API_KEY,
-      baseURL: 'https://openrouter.ai/api/v1',
     })
 
+    const text = completion.choices[0]?.message?.content || ''
     const quiz = JSON.parse(text)
 
     return NextResponse.json({ quiz })
