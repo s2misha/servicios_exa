@@ -4,12 +4,10 @@ import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { BookOpen, FileText, MessageSquare, Lightbulb, BarChart3, Upload } from 'lucide-react'
+import { BookOpen, FileText, MessageSquare, Upload } from 'lucide-react'
 import QuizGenerator from '@/components/quiz-generator'
 import SummaryGenerator from '@/components/summary-generator'
 import AnswerEvaluator from '@/components/answer-evaluator'
-import ResourceSuggester from '@/components/resource-suggester'
-import ProgressAnalyzer from '@/components/progress-analyzer'
 import MaterialUploader from '@/components/material-uploader'
 
 const topics = [
@@ -47,20 +45,6 @@ export default function Dashboard() {
       description: 'Evalúa y proporciona comentarios sobre respuestas abiertas',
       icon: MessageSquare,
       component: AnswerEvaluator
-    },
-    {
-      id: 'resources',
-      title: 'Sugerencias de Recursos',
-      description: 'Recomienda recursos adicionales personalizados',
-      icon: Lightbulb,
-      component: ResourceSuggester
-    },
-    {
-      id: 'analysis',
-      title: 'Análisis de Progreso',
-      description: 'Analiza el progreso del estudiante y áreas de mejora',
-      icon: BarChart3,
-      component: ProgressAnalyzer
     },
     {
       id: 'upload',
@@ -101,7 +85,7 @@ export default function Dashboard() {
             {ActiveComponent && <ActiveComponent topics={topics} />}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sections.map((section) => {
               const Icon = section.icon
               return (

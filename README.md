@@ -21,19 +21,8 @@ Microservicio web que se integra con Chamilo LMS para el curso de Ciencia, Tecno
    - Puntuación del 0 al 100
    - Identificación de fortalezas y áreas de mejora
 
-4. **Sugerencias de Recursos**
-   - Recomendaciones personalizadas de recursos adicionales
-   - Diferentes tipos: lecturas, videos, actividades, sitios web
-   - Adaptado al nivel del estudiante
-
-5. **Análisis de Progreso**
-   - Análisis del rendimiento del estudiante
-   - Identificación de patrones y tendencias
-   - Recomendaciones específicas para mejorar
-
-6. **Gestión de Material**
+4. **Gestión de Material**
    - Carga y organización del material del curso
-   - Edición y eliminación de contenido
    - Reutilización eficiente para ahorrar tokens
 
 ### 🚀 Tecnologías
@@ -83,17 +72,11 @@ El microservicio puede integrarse con Chamilo de varias formas:
 2. **iFrame**: Embeber el microservicio completo o funcionalidades específicas
 3. **Ventana emergente**: Abrir funcionalidades en ventanas modales
 
-### URLs de Funcionalidades
-
-- Panel principal: `/`
-- Todas las funcionalidades están accesibles desde el panel principal
-
 ### Gestión de Material
 
 1. Ve a "Gestión de Material"
-2. Agrega el contenido de tus PDFs o documentos del curso
-3. Organiza por temas
-4. El material estará disponible para todas las herramientas de IA
+2. Sube tus archivos .txt a la carpeta `data/cta-materials/`
+3. El material estará disponible para todas las herramientas de IA
 
 ## Optimización de Tokens
 
