@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { generateText } from 'ai'
-import { createOpenRouter } from '@ai-sdk/openrouter'
-
-const openrouter = createOpenRouter({
-  apiKey: process.env.OPENROUTER_API_KEY,
-})
+import { openai } from 'ai/openai'
 
 export async function POST(request: NextRequest) {
   try {
@@ -37,9 +33,11 @@ Responde en formato JSON con esta estructura:
 }`
 
     const { text } = await generateText({
-      model: openrouter('mistralai/mistral-7b-instruct:free'),
+      model: openai('gpt-3.5-turbo'),
       prompt,
       temperature: 0.5,
+      apiKey: process.env.OPENROUTER_API_KEY,
+      baseURL: 'https://openrouter.ai/api/v1',
     })
 
     const evaluation = JSON.parse(text)

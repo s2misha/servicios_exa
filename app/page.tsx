@@ -69,7 +69,7 @@ export default function Dashboard() {
             Asistente inteligente para el curso de Ciencia, Tecnología y Ambiente
           </p>
           <Badge variant="secondary" className="text-sm">
-            Powered by Mistral 7B via OpenRouter
+            Powered by OpenRouter API
           </Badge>
         </div>
 

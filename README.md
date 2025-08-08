@@ -1,6 +1,6 @@
 # Microservicio IA - Chamilo CTA
 
-Microservicio web que se integra con Chamilo LMS para el curso de Ciencia, Tecnología y Ambiente (CTA), potenciado por IA usando Mistral 7B a través de OpenRouter.
+Microservicio web que se integra con Chamilo LMS para el curso de Ciencia, Tecnología y Ambiente (CTA), potenciado por IA usando OpenRouter API.
 
 ## Características
 
@@ -21,11 +21,15 @@ Microservicio web que se integra con Chamilo LMS para el curso de Ciencia, Tecno
    - Puntuación del 0 al 100
    - Identificación de fortalezas y áreas de mejora
 
+4. **Gestión de Material**
+   - Carga y organización del material del curso
+   - Detección automática de temas desde archivos .txt
+
 ### 🚀 Tecnologías
 
-- **Frontend**: Next.js 14, React, Tailwind CSS, shadcn/ui
+- **Frontend**: Next.js 15, React 18, Tailwind CSS, shadcn/ui
 - **Backend**: Next.js API Routes
-- **IA**: Mistral 7B via OpenRouter (modelo gratuito)
+- **IA**: OpenRouter API (compatible con múltiples modelos)
 - **Despliegue**: Vercel
 
 ## Configuración
@@ -68,28 +72,34 @@ El microservicio puede integrarse con Chamilo de varias formas:
 2. **iFrame**: Embeber el microservicio completo o funcionalidades específicas
 3. **Ventana emergente**: Abrir funcionalidades en ventanas modales
 
+### Gestión de Material
+
+1. Sube tus archivos .txt a la carpeta `data/cta-materials/`
+2. Ve a "Gestión de Material" para verificar que se detecten correctamente
+3. Los temas estarán disponibles automáticamente en todas las herramientas
+
 ### Temas Disponibles
 
-- La Ciencia
-- Método Científico
-- Campos de Aplicación del Método Científico
-- Personajes de Ciencia
 - Biotecnología
+- Campos de Aplicación del Método Científico
 - El Conocimiento Científico y Empírico
-- Materiales de Laboratorio
 - El Método Científico - La Penicilina
+- La Ciencia
+- Materiales de Laboratorio
+- Método Científico
+- Personajes de Ciencia
 
 ## Optimización
 
-- **Modelo gratuito**: Usa Mistral 7B que es gratuito en OpenRouter
-- **Prompts eficientes**: Instrucciones concisas y específicas
+- **Uso eficiente de tokens**: Los archivos solo se usan para detectar temas
+- **API compatible**: Funciona con cualquier modelo disponible en OpenRouter
 - **Respuestas estructuradas**: Formato JSON para procesamiento eficiente
 
 ## Personalización
 
 ### Agregar Nuevos Temas
 
-Edita el array `topics` en `app/page.tsx` para agregar nuevos temas del curso.
+Edita el mapeo en `lib/material-loader.ts` para agregar nuevos archivos y temas.
 
 ### Modificar Prompts
 
@@ -100,7 +110,7 @@ Los prompts de IA están en los archivos de API (`app/api/*/route.ts`). Puedes m
 Para usar un modelo diferente, cambia en los archivos de API:
 
 \`\`\`typescript
-model: openrouter('mistralai/mistral-7b-instruct:free'), // Modelo gratuito actual
+model: openai('gpt-4'), // o cualquier modelo disponible en OpenRouter
 \`\`\`
 
 ## Soporte
