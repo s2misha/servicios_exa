@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'tw-animate-css';
-
-@custom-variant dark (&:is(.dark *));
-
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
