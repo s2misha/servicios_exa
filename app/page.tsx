@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { BookOpen, FileText, MessageSquare, Upload } from 'lucide-react'
+import { BookOpen, FileText, MessageSquare } from 'lucide-react'
 import QuizGenerator from '@/components/quiz-generator'
 import SummaryGenerator from '@/components/summary-generator'
 import AnswerEvaluator from '@/components/answer-evaluator'
-import MaterialUploader from '@/components/material-uploader'
 
 const topics = [
   'La Ciencia',
@@ -28,7 +27,7 @@ export default function Dashboard() {
     {
       id: 'quiz',
       title: 'Generación de Cuestionarios',
-      description: 'Crea cuestionarios automáticos basados en el material del curso',
+      description: 'Crea cuestionarios automáticos sobre temas de CTA',
       icon: FileText,
       component: QuizGenerator
     },
@@ -45,13 +44,6 @@ export default function Dashboard() {
       description: 'Evalúa y proporciona comentarios sobre respuestas abiertas',
       icon: MessageSquare,
       component: AnswerEvaluator
-    },
-    {
-      id: 'upload',
-      title: 'Gestión de Material',
-      description: 'Carga y organiza el material del curso CTA',
-      icon: Upload,
-      component: MaterialUploader
     }
   ]
 
@@ -69,7 +61,7 @@ export default function Dashboard() {
             Asistente inteligente para el curso de Ciencia, Tecnología y Ambiente
           </p>
           <Badge variant="secondary" className="text-sm">
-            Powered by Gemini 2.0 Flash via OpenRouter
+            Powered by Mistral 7B via OpenRouter
           </Badge>
         </div>
 
@@ -85,7 +77,7 @@ export default function Dashboard() {
             {ActiveComponent && <ActiveComponent topics={topics} />}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {sections.map((section) => {
               const Icon = section.icon
               return (

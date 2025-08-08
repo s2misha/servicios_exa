@@ -1,13 +1,13 @@
 # Microservicio IA - Chamilo CTA
 
-Microservicio web que se integra con Chamilo LMS para el curso de Ciencia, Tecnología y Ambiente (CTA), potenciado por IA usando Gemini 2.0 Flash a través de OpenRouter.
+Microservicio web que se integra con Chamilo LMS para el curso de Ciencia, Tecnología y Ambiente (CTA), potenciado por IA usando Mistral 7B a través de OpenRouter.
 
 ## Características
 
 ### 🎯 Funcionalidades Principales
 
 1. **Generación de Cuestionarios**
-   - Cuestionarios automáticos basados en el material del curso
+   - Cuestionarios automáticos sobre temas de CTA
    - Preguntas de opción múltiple, verdadero/falso y abiertas
    - Exportación en formato Markdown
 
@@ -21,15 +21,11 @@ Microservicio web que se integra con Chamilo LMS para el curso de Ciencia, Tecno
    - Puntuación del 0 al 100
    - Identificación de fortalezas y áreas de mejora
 
-4. **Gestión de Material**
-   - Carga y organización del material del curso
-   - Reutilización eficiente para ahorrar tokens
-
 ### 🚀 Tecnologías
 
 - **Frontend**: Next.js 14, React, Tailwind CSS, shadcn/ui
 - **Backend**: Next.js API Routes
-- **IA**: Gemini 2.0 Flash via OpenRouter
+- **IA**: Mistral 7B via OpenRouter (modelo gratuito)
 - **Despliegue**: Vercel
 
 ## Configuración
@@ -72,16 +68,20 @@ El microservicio puede integrarse con Chamilo de varias formas:
 2. **iFrame**: Embeber el microservicio completo o funcionalidades específicas
 3. **Ventana emergente**: Abrir funcionalidades en ventanas modales
 
-### Gestión de Material
+### Temas Disponibles
 
-1. Ve a "Gestión de Material"
-2. Sube tus archivos .txt a la carpeta `data/cta-materials/`
-3. El material estará disponible para todas las herramientas de IA
+- La Ciencia
+- Método Científico
+- Campos de Aplicación del Método Científico
+- Personajes de Ciencia
+- Biotecnología
+- El Conocimiento Científico y Empírico
+- Materiales de Laboratorio
+- El Método Científico - La Penicilina
 
-## Optimización de Tokens
+## Optimización
 
-- **Material reutilizable**: El contenido se carga una vez y se reutiliza
-- **Gemini 2.0 Flash**: Modelo optimizado para velocidad y bajo consumo
+- **Modelo gratuito**: Usa Mistral 7B que es gratuito en OpenRouter
 - **Prompts eficientes**: Instrucciones concisas y específicas
 - **Respuestas estructuradas**: Formato JSON para procesamiento eficiente
 
@@ -89,7 +89,7 @@ El microservicio puede integrarse con Chamilo de varias formas:
 
 ### Agregar Nuevos Temas
 
-Edita los arrays `topics` en los componentes para agregar nuevos temas del curso.
+Edita el array `topics` en `app/page.tsx` para agregar nuevos temas del curso.
 
 ### Modificar Prompts
 
@@ -97,10 +97,10 @@ Los prompts de IA están en los archivos de API (`app/api/*/route.ts`). Puedes m
 
 ### Cambiar Modelo de IA
 
-Para usar Gemini 2.0 Pro en lugar de Flash para tareas más complejas, cambia:
+Para usar un modelo diferente, cambia en los archivos de API:
 
 \`\`\`typescript
-model: openrouter('google/gemini-2.0-pro-exp')
+model: openrouter('mistralai/mistral-7b-instruct:free'), // Modelo gratuito actual
 \`\`\`
 
 ## Soporte
